@@ -29,10 +29,10 @@ def dAlembert(funds,initial_wager,wager_count):
   
   while currentWager <= wager_count:
     if previousWager == 1:
-    if wager == initial_wager:
-      pass
-    else:
-      wager -= initial_wager
+      if wager == initial_wager:
+        pass
+      else:
+        wager -= initial_wager
   
   if rollDice():
     value += wager
@@ -44,11 +44,10 @@ def dAlembert(funds,initial_wager,wager_count):
   
   if value <= 0:
     da_busts += 1
-    break
   elif previousWager == 0:
     wager = previousWagerAmount + initial_wager
-    if(value — wager) <= 0:
-    wager = value
+    if(value - wager) <= 0:
+      wager = value
   
   if rollDice():
     value += wager
@@ -60,7 +59,6 @@ def dAlembert(funds,initial_wager,wager_count):
   
   if value <= 0:
     da_busts += 1
-    break
   
   currentWager += 1
   ret += value
@@ -72,9 +70,12 @@ def dAlembert(funds,initial_wager,wager_count):
     counter += 1
   
   results = {
-    ‘totalInvested’: daSampSize*startingFunds,
-    ‘totalReturn’: ret,
-    ‘roi’: ret — (daSampSize*startingFunds),
-    ‘bustRate’: (da_busts/daSampSize) * 100.00,
-    ‘profitRate’: (da_profits/daSampSize) * 100.00
+    'totalInvested': daSampSize*startingFunds,
+    'totalReturn': ret,
+    'roi': ret - (daSampSize*startingFunds),
+    'bustRate': (da_busts/daSampSize) * 100.00,
+    'profitRate': (da_profits/daSampSize) * 100.00
   }
+
+  #print(str(results))
+  #sys.stdout.flush()
